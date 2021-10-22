@@ -1,0 +1,50 @@
+:root {
+  --color-primary: #397eff;
+  --color-white: #fff;
+  --color-black: #000;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
+}
+.card img {
+  height: 12rem;
+  width: 12rem;
+}
+.cardHeading {
+  font-weight: 500;
+  margin-top: 0.5rem;
+  font-size: 1.6rem;
+}
+.cardDetail {
+  cursor: pointer;
+  margin-top: 0.8rem;
+  background-color: var(--color-primary);
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-white);
+  transition: all 0.3s ease-in-out;
+}
+.cardDetail:hover {
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
+  transform: translateY(-0.3rem);
+}
+.loadingDiv {
+  height: 20rem;
+  width: 35rem;
+  background: rgb(219, 219, 219);
+  background: linear-gradient(
+    39deg,
+    rgba(219, 219, 219, 1) 30%,
+    rgba(10, 9, 6, 1) 97%
+  );
+}

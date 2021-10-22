@@ -1,0 +1,17 @@
+:root {
+  --color-primary: #427deb;
+  --color-white: #fff;
+  --color-black: #000;
+}
+.form {
+  padding: 5rem 3rem;
+  margin: 0 auto;
+}
+.form th {
+  background-color: var(--color-primary);
+  font-size: 2.5rem;
+  color: var(--color-white);
+  font-weight: 500;
+  padding: 0.8rem;
+  border-radius: 3px;
+}

@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import {Fragment} from 'react';
+import Sidebar from './components/Sidebar';
+import Home from './pages/Home';
+import Upload from './pages/Upload';
+import Management from './pages/Management';
+import BookDetail from './pages/BookDetail';
+import {Route,Switch,Redirect} from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Fragment>
+      <header>
+        <Sidebar/>
       </header>
-    </div>
+      <main>
+        <div>
+        <Switch>
+          <Route path='/' exact>
+            <Redirect to='/home'/>
+          </Route>
+          <Route path = '/home' exact>
+            <Home/>
+          </Route>
+          <Route path='/home/:bookId'>
+            <BookDetail/>
+          </Route>
+          <Route path='/manage'>
+            <Management/>
+          </Route>
+          <Route path='/upload'>
+            <Upload/>
+          </Route>
+        </Switch>
+        </div>
+      </main>
+    </Fragment>
   );
 }
 
