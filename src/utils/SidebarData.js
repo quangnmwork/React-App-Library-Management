@@ -22,4 +22,9 @@ export const SidebarData = [
     icon: <IoIcons.IoMdListBox />,
     
   },
+  {
+    title: 'Log out',
+    path:'/login',
+    icon : <IoIcons.IoMdLogOut/>
+  }
 ];
