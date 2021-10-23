@@ -17,17 +17,20 @@ const Sidebar = (props) => {
     const authCtx = useContext(AuthContext);
    
     const logoutHandler = (path) => {
+      console.log('path', path)
       if(path === '/login'){
+        console.log('hello')
         authCtx.logout();
         localStorage.removeItem('token');
         setIsLogin(false);
       }
+      console.log(path)
     }
 
     const navMenuClass = isOpenSidebar ? [styles.navMenu,styles.active].join(' ') : styles.navMenu; 
     const listNavItems = SidebarData.map((item, index) => {
       return (
-        <li key={index} className={styles.navText} onClick={logoutHandler}>
+        <li key={index} className={styles.navText} onClick={() => {logoutHandler(item.path)}}>
           <Link to={item.path}>
             {item.icon}
             <span className={styles.span}>{item.title}</span>

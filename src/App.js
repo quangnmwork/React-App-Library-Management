@@ -22,7 +22,7 @@ function App() {
         <div>
         <Switch>
           <Route path='/' exact>
-            <Redirect to='/login'/>
+            <Redirect to='/home'/>
           </Route>
           <Route path='/login' exact>
             <LoginPage/>

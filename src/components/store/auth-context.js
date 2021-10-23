@@ -9,10 +9,11 @@ export const AuthProvider = (props) =>{
     const initalToken = localStorage.getItem('token');
     console.log(initalToken)
     const [token,setToken] = React.useState(initalToken);
-    const userIsLoggedIn = !!token ;
+    const userIsLoggedIn = !!token;
+    //localStorage.getItem('token') !== null;
     const loginHandler = (token) => {
         setToken(token);
-        setToken(localStorage.setItem('token',token));
+       // setToken(localStorage.setItem('token',token));
     } 
     const logoutHandler = () => {
         setToken(null); 
