@@ -4,10 +4,13 @@ import useFecthAll from "../hooks/useFetchAll";
 import {useParams} from 'react-router-dom';
 import Loading from "../components/Loading";
 import {Fragment} from 'react';
+import { useContext } from "react";
+import AuthContext from '../components/store/auth-context';
+import Sidebar from '../components/Sidebar';
 const BookDetail = () => {
   const params = useParams();
   const [data,isLoading] =  useFecthAll(`https://thefour123.herokuapp.com/books/${params['bookId']}`);
-  
+  const authCtx = useContext(AuthContext);
   console.log(data);
   const bookDetail = (
     <div className= {styles.bookContainer}>
@@ -36,6 +39,7 @@ const BookDetail = () => {
   );
   return(
     <Fragment>
+      {authCtx.isLoggedIn?<Sidebar></Sidebar>:null}
       {!isLoading?bookDetail:<Loading/>}
     </Fragment>
   )

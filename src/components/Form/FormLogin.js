@@ -1,6 +1,6 @@
 
 import styles from './FormLogin.module.css';
-import { useRef,useState,useContext } from 'react';
+import { useRef,useState,useContext, Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../store/auth-context';
 const FormLogin = () => {
@@ -36,7 +36,7 @@ const FormLogin = () => {
           }
           const data =await res.json();
           authCtx.login(data.token);
-    
+          console.log(authCtx.isLoggedIn)
           return data.token;
         } catch(error) {
           console.log(error);
@@ -67,17 +67,20 @@ const FormLogin = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className = {styles.formContainer}>
-        <form className={styles.form}>
-          <h1>Welcome to Library</h1>
-          <input type="text" placeholder="Username" ref={enterUsername}/>
-          <input type="text" placeholder="Password" ref={enterPassword}/>
-          <button onClick ={submitHandler}>Login</button>
-          {/* {validate?null:<p className={styles.error}>Username or password is wrong</p>} */}
-        </form>
+    <Fragment>
+      <div className={styles.container}>
+      
       </div>
+      <div className = {styles.formContainer}>
+      <form className={styles.form}>
+        <h1>Welcome to Library</h1>
+        <input type="text" placeholder="Username" ref={enterUsername}/>
+        <input type="password" placeholder="Password" ref={enterPassword}/>
+        <button onClick ={submitHandler}>Login</button>
+        {/* {validate?null:<p className={styles.error}>Username or password is wrong</p>} */}
+      </form>
     </div>
+    </Fragment>
   )
 }
 export default FormLogin;

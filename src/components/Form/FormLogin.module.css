@@ -1,18 +1,22 @@
 .container {
   position: relative;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
+  background-image: url(https://cdn.wallpapersafari.com/77/82/C4nLhI.jpg);
+  filter: blur(2.5px) brightness(0.6);
 }
 .formContainer {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30%;
   height: auto;
   transform: translate(-50%, -50%);
   border: 0.5px solid black;
   padding: 3rem 5rem;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  border-radius: 5px;
+  width: 25%;
 }
 .form {
   display: flex;
@@ -29,6 +33,7 @@
   margin-bottom: 2rem;
   height: 3rem;
   width: 80%;
+  border-radius: 3px;
 }
 .form input:focus {
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);

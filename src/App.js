@@ -22,11 +22,11 @@ function App() {
         <div>
         <Switch>
           <Route path='/' exact>
-            <Redirect to='/home'/>
+            <Redirect to='/login'/>
           </Route>
-          <Route path='/login' exact>
+          {!authCtx.isLoggedIn&&<Route path='/login' exact>
             <LoginPage/>
-          </Route>
+          </Route>}
           {authCtx.isLoggedIn&&<Route path = '/home' exact>
             <Home/>
           </Route>}
