@@ -32,11 +32,14 @@ const FormLogin = () => {
             }
           });
           if(!res.ok) {
+            setValidate(false);
             throw new Error('Fail login');
           }
-          const data =await res.json();
-          authCtx.login(data.token);
+          const data =await res.json();  
+          const expirationTime = new Date(new Date().getTime()+100000);
+          authCtx.login(data.token,expirationTime.toISOString());
           console.log(authCtx.isLoggedIn)
+          setIsLoading(false);
           return data.token;
         } catch(error) {
           console.log(error);
@@ -76,8 +79,9 @@ const FormLogin = () => {
         <h1>Welcome to Library</h1>
         <input type="text" placeholder="Username" ref={enterUsername}/>
         <input type="password" placeholder="Password" ref={enterPassword}/>
+        {validate?null:<p className={styles.error}>Invalid username or password</p>}
         <button onClick ={submitHandler}>Login</button>
-        {/* {validate?null:<p className={styles.error}>Username or password is wrong</p>} */}
+       
       </form>
     </div>
     </Fragment>

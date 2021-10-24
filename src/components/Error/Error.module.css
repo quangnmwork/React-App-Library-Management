@@ -1,0 +1,45 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+@keyframes fade {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.errorContainer {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fade 0.5s ease-in;
+}
+.errorHeading {
+  background: rgb(66, 93, 235);
+  background: linear-gradient(
+    39deg,
+    rgba(66, 93, 235, 1) 36%,
+    rgba(61, 77, 214, 1) 72%
+  );
+  background-clip: text;
+  color: transparent;
+  font-size: 15rem;
+  font-weight: 700;
+  text-align: center;
+}
+.notify {
+  font-weight: 500;
+}
+.name {
+  color: #425deb;
+  font-weight: 700;
+}
