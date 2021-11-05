@@ -1,22 +1,33 @@
-
-import styles from './BookDetail.module.css';
+import styles from "./BookDetail.module.css";
 import useFecthAll from "../hooks/useFetchAll";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
-import {Fragment} from 'react';
+import { Fragment } from "react";
 import { useContext } from "react";
-import AuthContext from '../components/store/auth-context';
-import Sidebar from '../components/Sidebar';
+import AuthContext from "../components/store/auth-context";
+import Sidebar from "../components/Sidebar";
+import StarRatings from "react-star-ratings";
+import Zoom from "react-img-zoom";
+
 const BookDetail = () => {
   const params = useParams();
-  const [data,isLoading] =  useFecthAll(`https://thefour123.herokuapp.com/books/${params['bookId']}`);
+  const [data, isLoading] = useFecthAll(
+    `https://thefour123.herokuapp.com/books/${params["bookId"]}`
+  );
   const authCtx = useContext(AuthContext);
   console.log(data);
   const bookDetail = (
-    <div className= {styles.bookContainer}>
+    <div className={styles.bookContainer}>
       <div className={styles.topDetail}>
-        <div className ={styles.imgContainer} > 
-          <img className ={styles.img} src={data[6]} alt='Book image'></img>
+        <div className={styles.imgContainer}>
+          <Zoom
+            // className={styles.img}
+            zoomScale={1.6}
+            img={data[6]}
+            width={400}
+            height={400}
+            alt="Book image"
+          />
         </div>
         <div className={styles.topDetailright}>
           <p className={styles.heading}>Book Name:</p>
@@ -25,8 +36,16 @@ const BookDetail = () => {
           <p className={styles.secondary}>{data[3]}</p>
           <p className={styles.heading}>Category:</p>
           <p className={styles.secondary}>{data[5]}</p>
-          <p className={styles.heading}>Stars:</p>
-          <p className={styles.secondary}>{data[7]}</p>
+          <p className={styles.heading}>Rating:</p>
+
+          <p className={styles.secondary}>
+            <StarRatings
+              rating={data[7]}
+              numberOfStars={5}
+              starRatedColor={"#fce303"}
+              starDimension={"30px"}
+            />
+          </p>
           <p className={styles.heading}>Pages:</p>
           <p className={styles.secondary}>{data[8]}</p>
         </div>
@@ -37,11 +56,11 @@ const BookDetail = () => {
       </div>
     </div>
   );
-  return(
+  return (
     <Fragment>
-      {authCtx.isLoggedIn?<Sidebar></Sidebar>:null}
-      {!isLoading?bookDetail:<Loading/>}
+      {authCtx.isLoggedIn ? <Sidebar></Sidebar> : null}
+      {!isLoading ? bookDetail : <Loading />}
     </Fragment>
-  )
-}
+  );
+};
 export default BookDetail;
