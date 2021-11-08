@@ -8,7 +8,7 @@ import deleteBook from "../../utils/deleteBook";
 import editBook from "../../utils/editBooks";
 const Table = () => {
   const [data, isLoading] = useFecthAll(
-    "https://thefour123.herokuapp.com/books"
+    "https://thefour123.herokuapp.com/v1/books"
   );
   const [listBook, setListBook] = useState([]);
   const [currentItems, setCurrentItems] = useState(null);
