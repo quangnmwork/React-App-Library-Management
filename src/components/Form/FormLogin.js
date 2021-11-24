@@ -75,7 +75,7 @@ const FormLogin = () => {
           <h1>Welcome to Library</h1>
           <input type="text" placeholder="Username" ref={enterUsername} />
           <input type="password" placeholder="Password" ref={enterPassword} />
-          {isLoading ? <p>Waiting......</p> : null}
+          {/* {isLoading ? <p>Waiting......</p> : null} */}
           {validate ? null : (
             <p className={styles.error}>Invalid username or password</p>
           )}

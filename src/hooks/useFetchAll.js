@@ -1,7 +1,7 @@
-import React from 'react' ; 
-import { useState ,useEffect,useCallback} from 'react';
+import React from "react";
+import { useState, useEffect, useCallback } from "react";
 
-const useFecthAll = (API_URL , options = null) => {
+const useFecthAll = (API_URL, options = null) => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,16 +12,15 @@ const useFecthAll = (API_URL , options = null) => {
     try {
       const response = await fetch(API_URL);
       if (!response.ok) {
-        throw new Error('Something went wrong!');
+        throw new Error("Something went wrong!");
       }
 
       const data = await response.json();
       const loadBooks = [];
-     // console.log(data.data)
-      for(const key in data.data){
+      // console.log(data.data)
+      for (const key in data.data) {
         //console.log(key)
-        loadBooks.push(data.data[key])
-       
+        loadBooks.push(data.data[key]);
       }
       setBooks(loadBooks);
     } catch (error) {
@@ -29,15 +28,15 @@ const useFecthAll = (API_URL , options = null) => {
     }
     setIsLoading(false);
   }, []);
-    // const [data,setData] = useState(null);
-    // useEffect(() => {
-    //     fetch(API_URL, options)
-    //       .then(res => res.json())
-    //       .then(data => setData(data));
-    //   }, [API_URL, options]);
-    useEffect(()=> {
-      fetchBooksHandler()
-    },[fetchBooksHandler]);
-    return [books,isLoading];
-}
+  // const [data,setData] = useState(null);
+  // useEffect(() => {
+  //     fetch(API_URL, options)
+  //       .then(res => res.json())
+  //       .then(data => setData(data));
+  //   }, [API_URL, options]);
+  useEffect(() => {
+    fetchBooksHandler();
+  }, [fetchBooksHandler]);
+  return [books, isLoading];
+};
 export default useFecthAll;

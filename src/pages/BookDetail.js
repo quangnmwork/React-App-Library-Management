@@ -12,7 +12,7 @@ import Zoom from "react-img-zoom";
 const BookDetail = () => {
   const params = useParams();
   const [data, isLoading] = useFecthAll(
-    `https://thefour123.herokuapp.com/books/${params["bookId"]}`
+    `https://thefour123.herokuapp.com/v1/books/${params["bookId"]}`
   );
   const authCtx = useContext(AuthContext);
   console.log(data);

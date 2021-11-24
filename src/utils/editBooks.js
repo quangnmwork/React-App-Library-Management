@@ -1,13 +1,14 @@
-
-async function editBook(id,uploadData) {
-  const response = await fetch(`https://thefour123.herokuapp.com/books/${id}`,
+async function editBook(id, uploadData) {
+  const response = await fetch(
+    `https://thefour123.herokuapp.com/v1/books/${id}`,
     {
-      method:'PATCH',
+      method: "PATCH",
       body: JSON.stringify(uploadData),
-      headers:{
-      'Content-Type': 'application/json',
-      }
-    });
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   const data = response.json();
   console.log(data);
 }
